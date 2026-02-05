@@ -1,0 +1,20 @@
+from transformers import pipeline
+
+# Load summarization pipeline (pretrained model)
+summarizer = pipeline("summarization")
+
+# Long text sample
+text = """
+Artificial Intelligence is transforming the world at a rapid pace. From healthcare to education,
+AI-powered systems are improving efficiency and decision-making. Natural Language Processing,
+a branch of AI, helps machines understand human language. Technologies like chatbots,
+voice assistants, and translation systems are built using NLP. With the rise of deep learning
+and transformer models like BERT and GPT, NLP systems have become more powerful and accurate.
+AI continues to grow and influence industries worldwide.
+"""
+
+# Generate summary
+summary = summarizer(text, max_length=40, min_length=15, do_sample=False)
+
+print("Original Text:\n", text)
+print("\nSummarized Text:\n", summary[0]['summary_text'])
